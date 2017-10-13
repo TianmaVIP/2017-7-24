@@ -7,7 +7,11 @@
 <body>
     <div id="box"></div>
 <script>
-
+    document.addEventListener('mousemove',move);
+    function move(ev){
+        box.style.left = ev.clientX - disX + 'px';
+        box.style.Top = ev.clientY - disY + 'px';
+    }
 </script>
 </body>
 </html>
