@@ -7,7 +7,11 @@
 <body>
     <div id="box"></div>
 <script>
-
+    document.addEventListener('mouseup',up);
+    function up(){
+        document.removeEventListener('mouseup',up);
+        document.removeEventListener('mousemove',move);
+    }
 </script>
 </body>
 </html>
