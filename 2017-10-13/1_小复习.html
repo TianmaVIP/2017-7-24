@@ -13,9 +13,14 @@
     function down(ev){
         var disX = ev.clientX - this.offsetLeft;
         var disY = ev.clientY - this.offsetTop;
+        document.addEventListener('mousemove',move);
+        function move(ev){
+            box.style.left = ev.clientX - disX + 'px';
+            box.style.Top = ev.clientY - disY + 'px';
+        }
     }
 
-
+    
 </script>
 </body>
 </html>
