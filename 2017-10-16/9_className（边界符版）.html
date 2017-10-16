@@ -45,7 +45,7 @@
             }else{
                 var arr = [];
                 var aEle = document.getElementsByTagName('*');
-                var re = new RegExp('(^|\\s)' + sClass.substring(1) + '(\\s|$)','g');
+                var re = new RegExp('\\b' + sClass.substring(1) + '\\b','g');
                 for(var i=0;i<aEle.length;i++){
                     if(re.test(aEle[i].className)){
                         arr.push(aEle[i]);
@@ -56,10 +56,10 @@
         } 
    }
 
-   // 'li  li2'  ^ + li + 空格   
-   //'li2   li'  空格 + li +结尾
-   //'li2  li li3' \空格 + li + 空格
-   console.log(/(^|\s)li(\s|$)/.test('li2  li li3')); 
+   // 'li  li2'   
+   //'li2   li'  
+   //'li2  |li| li3'   |className|
+   console.log(/\bli\b/.test('li2   li')); 
 </script>
 </body>
 </html>
