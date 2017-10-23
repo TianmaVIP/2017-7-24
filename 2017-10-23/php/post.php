@@ -9,11 +9,11 @@ $users = array('leo','momo','刘伟','妙味');//
 
 if( in_array( $username , $users ) ){
 	
-	echo '用户名已经被注册了！';
+	echo $username.'用户名已经被注册了！';
 
 }else{
 
-	echo '可以注册';
+	echo $username.'可以注册';
 
 }
 

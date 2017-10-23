@@ -33,6 +33,10 @@
                     console.log(data);
                 }
             }
+
+            1.url是谁？
+            2.要给后端传什么？
+            3.成功了以后数据长什么样子？
         */
         ajax({
             url:'php/get.php',
@@ -40,6 +44,7 @@
                 user:userId.value
             },
             success:function(data){
+                //'xxx(用户名可以注册)'
                 data.replace(/(\((\D+)\))/,function($0,$1,$2){
                     // console.log($2);
                     data = $2;
