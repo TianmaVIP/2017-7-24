@@ -22,12 +22,11 @@
         
         //{user:txt.value,pass:123} =>  user=txt.value&pass=123
         ajax({
-            url:'php/post1.php',
-            method:'post',
+            url:'php/get_json.php',
+            method:'get',
             data:{
                 user:txt.value
             },
-            dataType:'str',
             success:function(data){
                 console.log(data);
             },
@@ -36,6 +35,8 @@
             }
         });
     }
+
+    // ''  ""
 
 
 

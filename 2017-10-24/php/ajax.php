@@ -4,6 +4,12 @@ header('content-type:text/html;charset=utf-8');
 $username = $_GET['user'];
 $noname = true;
 
+/*
+	php/ajax.php?user=小明	
+	
+	'{"code": 1, "data": "查无此人！"}'
+*/
+
 $aData = array(
 	array("name"=>"小明","age"=>"18","hobby"=>"编程","info"=>"我是一个快乐的小清新"),
 	array("name"=>"小红","age"=>"16","hobby"=>"逛街","info"=>"生命在于运动,逛街就是最好的运动方式"),

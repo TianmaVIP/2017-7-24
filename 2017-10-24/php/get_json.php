@@ -11,8 +11,8 @@ $users = array('leo','momo','dudu','刘伟','妙味');
 
 if( in_array( $username , $users ) ){
 	
-	echo '{"code": 1, "msg": "用户名已经被注册了！"}';
-//	echo "{'code': 1, 'msg': '用户名已经被注册了！'}";
+	// echo '{"code": 1, "msg": "用户名已经被注册了！"}';
+	echo "{'code': 1, 'msg': '用户名已经被注册了！'}";
 
 }else{
 

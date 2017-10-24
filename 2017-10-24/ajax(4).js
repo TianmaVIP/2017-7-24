@@ -37,7 +37,8 @@ function ajax(json){
             if(ajax.status >= 200 && ajax.status <= 207){
                 //说明我要json
                 if(settings.dataType === 'json'){
-                    settings.success(JSON.parse(ajax.responseText));
+                    var d = ajax.responseText;
+                    settings.success(eval('('+ new Function('','return'+ d)() +')'));
                 }else if(settings.dataType === 'xml'){
                     settings.success(ajax.responseXML);
                 }else if(settings.dataType === 'str'){
