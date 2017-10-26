@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<title>阿飞老师vip课-测试版jQuery推箱子小游戏</title>
+		<style type="text/css">
+			*{ margin:0; padding:0;}
+			#wrap{ position:relative; margin:0 auto; top:20px;}
+			.pos1{ width:50px; height:50px; background:url(img/gray.png); float:left;} /*灰区*/
+			.pos2{ width:50px; height:50px; background:url(img/wall.png); float:left;} /*墙*/
+			.pos3{ width:50px; height:50px; background:url(img/red.png); float:left;} /*红区*/
+			.pos0{ width:50px; height:50px; background:url(img/blue.png); float:left;} /*蓝区*/
+			
+			.box{ width:50px; height:50px; background-image:url(img/box.png); position:absolute; z-index:22;}
+			.person{ width:50px; height:50px; background-image:url(img/person.png); position:absolute; z-index:22;}
+		</style>
+	</head>
+	<body>
+		<input type='button' value='重玩本关' id='rethis' style=" position:absolute; left:50%; margin-left:-28px;" />
+		<div id='wrap'></div>
+		
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script>
+		$(function(){
+			Game.exe(0);
+		});
+
+		var Game = {
+			//执行
+			exe:function(index){
+				this.map(index);
+				if(index==6){
+					var play = setInterval(function(){
+						
+						alert('咳咳~别挣扎了！');
+						var bbb = prompt("快说 飞哥很帅 ！马上通关哟=。=","");
+						if (bbb == '飞哥很帅')
+						{
+							alert('哎哟~我也是这么认为的！~');
+							alert('伦家脸都红啦！么么哒(づ￣ 3￣)づ');
+							alert('然而');
+							alert('这并没有什么卵用...');
+							alert('因为我也不知道怎么过关啊...T.T');
+							alert('加油吧骚年..');
+							alert('过关了记得教教我...');
+							clearInterval(play);
+						}else{
+							alert('╰_╯');
+						}
+					},200000)
+				}
+				$('#rethis').click($.proxy(function(){
+					this.map(index);
+				},this));
+			},
+
+			//关卡数据
+			gk:[
+				//第1关
+				{
+					//布局
+					layout:[
+						1,2,2,2,2,2,2,2,1,
+						1,2,0,0,0,0,0,2,1,
+						1,2,0,0,0,0,0,2,2,
+						2,2,0,0,0,0,0,3,2,
+						2,0,0,0,0,0,3,3,2,
+						2,0,0,0,0,0,0,0,2,
+						2,0,0,0,2,2,2,2,2,
+						2,2,2,2,2,1,1,1,1
+					],
+					//地图宽高
+					size:[9,8],
+					//箱子坐标
+					box:[
+						{x:5,y:4},
+						{x:3,y:3},
+						{x:2,y:4},
+					],
+					//人物坐标
+					person:[3,1],
+				},
+
+				//第2关
+				{
+					//布局
+					layout:[
+						1,2,2,2,2,2,2,2,2,
+						1,2,0,0,0,0,0,0,2,
+						1,2,0,0,0,0,0,0,2,
+						2,2,0,0,0,0,0,3,2,
+						2,0,0,0,2,0,3,3,2,
+						2,0,0,0,2,0,0,0,2,
+						2,0,0,0,2,0,0,0,2,
+						2,2,2,2,2,2,2,2,2
+					],
+					//地图宽高
+					size:[9,8],
+					//箱子坐标
+					box:[
+						{x:2,y:4},
+						{x:3,y:3},
+						{x:5,y:4},
+					],
+					//人物坐标
+					person:[4,2],
+				},
+
+				//第3关
+				{
+					//布局
+					layout:[
+						1,2,2,2,2,2,2,2,1,
+						1,2,0,0,3,3,3,2,1,
+						1,2,0,0,0,2,2,2,2,
+						2,2,2,0,0,0,0,0,2,
+						2,0,0,0,2,0,2,0,2,
+						2,0,0,0,2,0,0,0,2,
+						2,0,0,0,2,2,2,2,2,
+						2,2,2,2,2,1,1,1,1
+					],
+					//地图宽高
+					size:[9,8],
+					//箱子坐标
+					box:[
+						{x:3,y:3},
+						{x:2,y:5},
+						{x:5,y:4},
+					],
+					//人物坐标
+					person:[3,1],
+				},
+
+				//第4关
+				{
+					//布局
+					layout:[
+						2,2,2,2,2,2,2,2,1,
+						2,0,0,0,3,3,3,2,1,
+						2,0,0,0,0,2,2,2,2,
+						2,2,0,2,0,0,0,0,2,
+						2,0,0,2,2,0,2,0,2,
+						2,0,0,0,0,0,0,0,2,
+						2,0,0,0,2,2,2,2,2,
+						2,2,2,2,2,1,1,1,1
+					],
+					//地图宽高
+					size:[9,8],
+					//箱子坐标
+					box:[
+						{x:2,y:3},
+						{x:2,y:5},
+						{x:5,y:4},
+					],
+					//人物坐标
+					person:[3,1],
+				},
+
+				//第5关
+				{
+					//布局
+					layout:[
+						2,2,2,2,2,1,1,1,1,
+						2,0,0,0,2,1,1,1,1,
+						2,0,0,0,2,1,2,2,2,
+						2,0,0,0,2,1,2,3,2,
+						2,2,2,0,2,2,2,3,2,
+						1,2,2,0,0,0,0,3,2,
+						1,2,0,0,0,2,0,0,2,
+						1,2,0,0,0,2,2,2,2,
+						1,2,2,2,2,2,1,1,1
+					],
+					//地图宽高
+					size:[9,9],
+					//箱子坐标
+					box:[
+						{x:2,y:2},
+						{x:2,y:3},
+						{x:3,y:2},
+					],
+					//人物坐标
+					person:[1,1],
+				},
+
+				//第6关
+				{	
+					//布局
+					layout:[
+						1,1,2,2,2,2,1,1,
+						1,1,2,3,3,2,1,1,
+						1,2,2,0,3,2,2,1,
+						1,2,0,0,0,3,2,1,
+						2,2,0,0,0,0,2,2,
+						2,0,0,2,0,0,0,2,
+						2,0,0,0,0,0,0,2,
+						2,2,2,2,2,2,2,2
+					],
+					//地图宽高
+					size:[8,8],
+					//箱子坐标
+					box:[
+						{x:4,y:3},
+						{x:3,y:4},
+						{x:4,y:5},
+						{x:5,y:5},
+					],
+					//人物坐标
+					person:[3,6],
+				},
+
+				//第7关
+				{	
+					//布局
+					layout:[
+						1,1,1,1,2,2,2,2,2,2,2,1,
+						1,1,1,1,2,0,0,2,0,0,2,1,
+						1,1,1,1,2,0,0,0,0,0,2,1,
+						2,2,2,2,2,0,0,2,0,0,2,1,
+						3,3,3,2,2,2,0,2,0,0,2,2,
+						3,0,0,2,0,0,0,0,2,0,0,2,
+						3,0,0,0,0,0,0,0,0,0,0,2,
+						3,0,0,2,0,0,0,0,2,0,0,2,
+						3,3,3,2,2,2,0,2,0,0,2,2,
+						2,2,2,2,2,0,0,0,0,0,2,1,
+						1,1,1,1,2,0,0,2,0,0,2,1,
+						1,1,1,1,2,2,2,2,2,2,2,1
+					],
+					//地图宽高
+					size:[12,12],
+					//箱子坐标
+					box:[
+						{x : 5 , y : 6},
+						{x : 6 , y : 3},
+						{x : 6 , y : 5},
+						{x : 6 , y : 7},
+						{x : 6 , y : 9},
+						{x : 7 , y : 2},
+						{x : 8 , y : 2},
+						{x : 9 , y : 6},
+					],
+					//人物坐标
+					person:[5,9],
+				}
+				
+			],
+
+			//创建地图
+			map:function(index){
+				$('#wrap').empty();
+				$('#wrap').css({
+					width:this.gk[index].size[0]*50+'px',
+					height:this.gk[index].size[1]*50+'px',
+				});
+				for (var i=0;i<this.gk[index].layout.length;i++)
+				{
+					$('#wrap').append('<div class="pos'+Game.gk[index].layout[i]+'"></div>');
+				};
+				for (var i=0;i<this.gk[index].box.length;i++)
+				{
+					
+					$('#wrap').append('<div class="box"></div>');
+					$('div.box').eq(i).css({
+						top:this.gk[index].box[i].y*50+'px',
+						left:this.gk[index].box[i].x*50+'px',
+					});
+				};
+				$person = $('<div class="person"></div>');
+				$('#wrap').append($person);
+				$person.css({
+					top:this.gk[index].person[1]*50+'px',
+					left:this.gk[index].person[0]*50+'px',
+				});
+				$person.data('x',this.gk[index].person[0]);
+				$person.data('y',this.gk[index].person[1]);
+				this.controlPerson(index,$person);
+			},
+
+			//人物操作
+			controlPerson:function(index,$person){
+				$(document).unbind('keydown');
+				$(document).bind('keydown',$.proxy(function(e){
+					//console.log(123);	
+					//alert(2)
+					var keycode = e.which;
+					switch (keycode)
+					{
+						case 38://上
+							this.movePerson({y:-1},$person,index);
+							break;
+						case 40://下
+							this.movePerson({y:1},$person,index);
+							break;
+						case 37://左
+							this.movePerson({x:-1},$person,index);
+							break;
+						case 39://右
+							this.movePerson({x:1},$person,index);
+							break;
+					}
+				},this));
+			},
+
+			//人物移动
+			movePerson : function(oJson,$person,index){
+				var oX = oJson.x || 0;
+				var oY = oJson.y || 0;
+				if ( this.gk[index].layout[($person.data('y')+oY)*Game.gk[index].size[0]+$person.data('x')+oX] != 2 )
+				{
+					$person.data('x',$person.data('x')+oX);
+					$person.data('y',$person.data('y')+oY);
+					$person.css({
+						left:$person.data('x')*50+'px',
+						top:$person.data('y')*50+'px'
+					});
+				};
+				
+				$('div.box').each(function(i){
+					if (Game.pz($(this),$person) && Game.gk[index].layout[($person.data('y')+oY)*Game.gk[index].size[0]+$person.data('x')+oX] != 2)
+					{
+						$(this).css({
+							left:($person.data('x')+oX)*50+'px',
+							top:($person.data('y')+oY)*50+'px'
+						});
+						$('div.box').each(function(j){
+							if ( Game.pz($(this),$('div.box').eq(i)) && i!=j   )
+							{
+								$('div.box').eq(i).css({
+									left:($person.data('x'))*50+'px',
+									top:($person.data('y'))*50+'px'
+								});
+								$person.data('x',$person.data('x')-oX);
+								$person.data('y',$person.data('y')-oY);
+								$person.css({
+									left:$person.data('x')*50+'px',
+									top:$person.data('y')*50+'px'
+								});
+
+							}
+						});
+					}else if(Game.pz($(this),$person)){
+						$person.data('x',$person.data('x')-oX);
+						$person.data('y',$person.data('y')-oY);
+						$person.css({
+							left:$person.data('x')*50+'px',
+							top:$person.data('y')*50+'px'
+						});
+					}
+				});
+				//console.log($person.data('x')+','+$person.data('y'))
+				this.changeBox(index);
+				this.nextGk(index);
+			},
+
+			//碰撞检测
+			pz:function(obj1,obj2){
+				//obj1 物体 ； obj2 人物
+				var T1 = obj1.position().top;
+				var B1 = obj1.position().top + obj1.height();	
+				var L1 = obj1.position().left;	
+				var R1 = obj1.position().left + obj1.width();
+
+				var T2 = obj2.position().top;
+				var B2 = obj2.position().top + obj2.height();	
+				var L2 = obj2.position().left;	
+				var R2 = obj2.position().left + obj2.width();
+				//alert(T1+','+B1+','+L1+','+R1+','+T2+','+B2+','+L2+','+R2)
+				
+				if (L1>=R2 || R1<=L2 || T1>=B2 || B1<=T2)
+				{
+					//没撞上
+					return false;
+				}else{
+					//console.log(T1+','+B1+','+L1+','+R1+','+T2+','+B2+','+L2+','+R2)
+					//撞上了
+					return true;
+				}
+			},
+
+			//下一关
+			nextGk : function(index){
+				var iNum = 0;
+				$('div.pos3').each(function(i){
+					$('.box').each(function(j){
+						if (Game.pz($(this),$('div.pos3').eq(i)))
+						{
+							iNum++;
+						}
+					});
+				});
+				if ( iNum == $('div.pos3').size() )
+				{
+					index++;
+					switch (index)
+					{
+						case 1:
+							alert('恭喜通过第一关！干巴蝶！')
+							break;
+						case 2:
+							alert('咦？这不可能…！…')
+							break;
+						case 3:
+							alert('居然能到这一步>.<')
+							break;
+						case 4:
+							alert('难道？？？你就是传说中的推箱子之王？！')
+							break;
+						case 5:
+							alert('好吧！我被你的智慧折服了~最后一关')
+							break;
+						case 6:
+							alert('噗————我自己都没通过啊！你是怎么做到的！');
+							alert('看来我得使出我得真正实力了！')
+							break;
+						case 7:
+							alert('.....这一关是不可能过的.')
+							break;
+					
+					}
+					this.exe(index);
+				}
+			},
+
+			//换箱子
+			changeBox : function(index){
+				$('.box').each(function(i){
+					var y = $(this).position().top / 50;
+					var x = $(this).position().left / 50;
+					if ( Game.gk[index].layout[ y*Game.gk[index].size[0]+x ] == 3 )
+					{
+						$(this).css('background','url(img/box2.png)');
+					}else{
+						$(this).css('background','url(img/box.png)');
+					}
+				});
+			},
+		};
+		</script>
+	</body>
+</html>
