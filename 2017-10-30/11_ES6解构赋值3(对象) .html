@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width:100px;height:200px;"></div>
+<script>
+    /*
+        对象解构：
+            let {foo} = {foo:1}  -> foo=1
+
+            let {foo:f} = {foo:1}; ->给foo取了个别名叫f，foo就没了，访问就报错
+
+            
+
+    */
+   
+    // let {foo:ff,bar:[a,b,c,{kk}]} = {foo:1,bar:[3,4,5,{kk:'mm'}]};
+
+    // console.log(ff);
+
+    //左边是对象右边也要是对象，不然就报错
+    // let [foo,bar] = {foo:1,bar:[3,4,5,{kk:'mm'}]};
+    
+    // console.log(foo);
+
+    // var {x:y = 3} = {x:undefined};
+
+    // console.log(y);
+
+    let {x:y,y=100} = {x: 1};
+
+    console.log(y);
+
+    //函数
+    // function fn(json={url:'hehe',data:{}}){
+    //     return json;
+    // }
+    // console.log(fn({url:'www.'}).url);
+
+</script>
+</body>
+</html>

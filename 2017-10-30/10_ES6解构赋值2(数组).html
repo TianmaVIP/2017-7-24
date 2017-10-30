@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width:100px;height:200px;"></div>
+<script>
+    /*
+        数组的解构，右边是数组，左边一定要是数组
+
+        扩展运算符：
+            ...[1,2,3] -> 1 2 3
+    */
+    // let [a,[[b]],c] = [1,[[2]],3];
+    // let [,,c] = [1,[[2]],3];  //如果不写 , 认为是1
+    // let [...arr] = [];
+    // console.log(arr);
+
+    //报错 - 左边的格式一定和右边的一样（左边数组 = 右边也是数组）
+    // let [foo] = 1;
+    // let [foo] = false;
+    // let [foo] = NaN;
+    // let [foo] = undefined;
+    // let [foo] = null;
+    // let [foo] = {};
+    // console.log(foo);
+
+    // let [x=40,y] = [10,20];
+
+    // function f() {
+    //     console.log('aaa');
+    // }
+
+    // let [x = f()] = [1];
+
+    // console.log(x); //1 
+
+    // let [x=y , y = 1] = [,2];
+
+    // console.log(y);
+
+    let [,a,b,c,[f],[g,[h,[[i],j]]],d,e] = [,1,2,3,[6],[7,[8,[[9],10]]],4,5];
+
+    // console.log(a,b,c,d,e,f,g,j);
+
+
+
+</script>
+</body>
+</html>

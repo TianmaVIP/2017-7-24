@@ -16,7 +16,7 @@ http.createServer((req,res)=>{
    let onOff = false;
    if(urlName !== '/favicon.ico'){
         console.log(urlName)
-        if(urlName.indexOf('?')!=-1){ //有问号，走接口
+        if(urlName.indexOf('?')!=-1){ //有问号，走接口?uer=xxx&pass=xxx
             urlName = urlName.split('?')[1];
             let arr = urlName.split('&');
             for(var i=0;i<arr.length;i++){
