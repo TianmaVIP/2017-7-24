@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--产生一个IE最新的渲染方式，提高性能以及显示效果-->
+      <meta name="viewport" content="width=device-width, initial-scale=1"><!--设置viewport让移动端的视口跟页面是相同的一个尺寸-->
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<style>
+			/*.container{
+				border:1px solid red;
+				padding: 0;
+			}*/
+			div[class*="col-"]{
+				background: #000000;
+				border-right: 1px solid skyblue;
+				border-bottom: 1px solid skyblue;
+				color: #fff;
+				text-align: center;
+				height: 50px;
+				line-height: 50px;
+			}
+			/*!important  优先级*/
+		</style>
+	</head>
+	<body>
+		
+		<!--
+			栅格系统 : 
+
+			container-fluid  自适应
+			
+			container 固定 
+				阈值分为：1170 970 750 auto
+				
+				行：row 列：col 分12列 
+			语法：
+				col-lg-* 超大屏幕的一种展示方式
+				col-md-* 中等屏幕范围
+				col-sm-* ipad屏幕范围
+				col-xs-*	移动端屏幕范围
+			列偏移：
+				col-*-offset-*
+			列排序：
+				col-*-push-*
+				col-*-pull-*
+			thumbnail 缩略图的一种方法   caption
+		-->
+			<div class="container">
+				<div class="col-lg-4">col-lg-4</div>
+				<div class="col-lg-4">col-lg-4</div>
+				<div class="col-lg-4">col-lg-4</div>
+			</div>
+			<div class="container">
+				<div class="col-lg-4 col-lg-offset-8">col-lg-4</div>
+			
+			</div>
+			
+				<!-- <div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="thumbnail">
+								<img src="img/vuejs.png">
+								<div class="caption">
+									<h3>vue</h3>
+									<p>aaaaaaaa</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+								<div class="thumbnail">
+									<img src="img/vuejs.png">
+									<div class="caption">
+										<h3>vue</h3>
+										<p>aaaaaaaa</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-4 col-sm-6">
+									<div class="thumbnail">
+										<img src="img/vuejs.png">
+										<div class="caption">
+											<h3>vue</h3>
+											<p>aaaaaaaa</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-4 col-sm-6">
+										<div class="thumbnail">
+											<img src="img/vuejs.png">
+											<div class="caption">
+												<h3>vue</h3>
+												<p>aaaaaaaa</p>
+											</div>
+										</div>
+									</div>
+					</div>
+				
+					
+				</div>
+			 -->
+
+		<script src="js/jquery-3.2.1.js"></script>
+		<script src="js/bootstrap.js"></script>
+	</body>
+</html>
